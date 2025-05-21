@@ -21,10 +21,12 @@
        var eventDate = Date.parse(settings['date']) / 1000;
        var currentDate = Math.floor($.now() / 1000);
        
-       if(eventDate <= currentDate) {
-         callback.call(this);
-         clearInterval(interval);
+       if (eventDate <= currentDate) {
+    if (typeof callback === 'function') {
+        callback.call(this);
        }
+    clearInterval(interval);
+      }
        
        var seconds = eventDate - currentDate;
        

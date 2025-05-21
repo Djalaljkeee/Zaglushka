@@ -3,7 +3,7 @@
 	
 	/* COUNTDOWN */
 	$("#countdown").countdown({
-		date: "06 Mart 2018 00:00:00", // Put your date here
+		date: "2025-08-31 00:00:00", // Put your date here
 		format: "on"
 	});
 	
