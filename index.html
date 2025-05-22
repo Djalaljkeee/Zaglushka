@@ -1,157 +1,254 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-    
     <meta charset="UTF-8">
-    <title>ООО "МПП" Официальный сайт</title> <!-- Add your title -->
-    <link rel="shortcut icon" href="img/favicon.ico" /> <!-- Add your own favicon to the images folder -->
-	<link rel="icon" type="image/x-icon" href="img/favicon.ico" /> <!-- Add your own favicon to the images folder -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- STYLES -->
-    
-    <!-- Bootstrap 3.0.2 -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-    <!-- Animate -->
-    <link rel="stylesheet" type="text/css" href="css/animate.min.css" />
-    <!-- Vegas -->
-    <link rel="stylesheet" type="text/css" href="css/jquery.vegas.min.css" />
-    <!-- STYLES.CSS -->
-    <link rel="stylesheet" type="text/css" href="css/styles.css" />
-    
-    <!--[if lt IE 9]>
-        <script type="text/javascript" src="scripts/respond.min.js"></script>
-        <script type="text/javascript" src="scripts/html5shiv.js"></script>
-    <![endif]-->
-    
+    <title>ООО "МПП"</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: url('bg.webp') no-repeat center center/cover;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 90%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .timer div {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+            min-width: 60px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: #fff;
+            color: #000;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 15px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .nav-links {
+            margin-bottom: 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .timer div {
+                min-width: 50px;
+                font-size: 0.9rem;
+            }
+
+            .modal-content {
+                max-width: 95%;
+            }
+
+            .nav-links a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-	
-	<div class="background"></div>
-	
-	<div class="page-wrapper">
-		
-		<div class="btn-wrapper">
-			<a href="#" class="newsletter-btn open-btn"><i class="fa fa-refresh"></i> Предупредить об открытии</a>
-			<a href="#" class="contact-btn open-btn"><i class="fa fa-envelope-o"></i> Контакты</a>
-			<a href="#" class="about-btn open-btn"><i class="fa fa-users"></i>О компании</a>
-		</div>
-		<ul class="list-inline btn-list">
-			<li><a href="#" class="newsletter-btn open-btn"><i class="fa fa-refresh"></i> Предупредить об открытии</a></li>
-			<li><a href="#" class="contact-btn open-btn"><i class="fa fa-envelope-o"></i> Контакты</a></li>
-			<li><a href="#" class="about-btn open-btn"><i class="fa fa-users"></i>О компании</a></li>
-		</ul>
-		
-		
-		<div class="page-wrapper-inner">
-			
-			<div class="main current">
-				<div class="container">
-				
-					<div class="logo-wrapper">
-						<h1 class="logo">ООО "МПП"</h1>
-					</div> <!-- end logo-wrapper -->
-					
-					<div class="subline-wrapper">
-						<p>Сайт временно не работает</p>
-					</div><!-- end about-wrapper -->
-					
-					<div class="countdown">
-						<p>Новый дизайн сайта Вы увидите через:</p>
-						<ul id="countdown" class="list-inline">
-							<li class="time">
-								<span class="days">00</span>
-								<p class="timeRefDays">дней</p>
-							</li> <!-- end time -->
-							<li class="time">
-								<span class="hours">00</span>
-								<p class="timeRefHours">часов</p>
-							</li> <!-- end time -->
-							<li class="time">
-								<span class="minutes">00</span>
-								<p class="timeRefMinutes">минут</p>
-							</li> <!-- end time -->
-							<li class="time">
-								<span class="seconds">00</span>
-								<p class="timeRefSeconds">секунд</p>
-							</li> <!-- end time -->
-						</ul> <!-- end countdown -->
-					</div> <!-- end countdown -->
-				
-				</div> <!-- end container -->
-			</div> <!-- end main -->
-			
-			<div class="newsletter">
-				<a href="#" class="close-btn open-btn"><i class="fa fa-times"></i> Закрыть</a>
-				<div class="container">
-					<h1 class="heading">Подписаться на открытие</h1>
-					<p>Оставьте Ваш email и мы Вас оповестим об открытии сайта</p>
-					<form action="scripts/newsletter.php" method="post" id="newsletter-form">
-						<div class="input-group input-group-lg">
-							<input type="text" name="newsletter-email" id="newsletter-email" class="form-control" placeholder="Введите Ваш Email" />
-							<span class="input-group-btn">
-								<input type="submit" id="newsletter-submit" class="btn" value="Подписаться" />
-							</span>
-						</div>
-						<div class="alert alert-success" id="newsletter-success"></div>
-						<div class="alert alert-danger" id="newsletter-error"></div>
-					</form>
-				</div> 
-			</div>
-			
-			<div class="contact">
-				<a href="#" class="close-btn open-btn"><i class="fa fa-times"></i> Закрыть</a>
-				<div class="container">
-					<h1 class="heading">Связь с нами</h1>
-					<p>По любому вопросу вы можете отправить нам сообщение:</p>
-					<form action="scripts/contact.php" method="post" id="contact-form">
-						<div class="input-group">
-							<span class="input-group-addon tool-tip" title="Your Name" data-placement="left"><i class="fa fa-user"></i></span>
-							<input type="text" class="form-control" id="contact-name" name="contact-name" placeholder="Ваше имя" />
-						</div> 
-						<div class="input-group">
-							<span class="input-group-addon tool-tip" title="Your Email" data-placement="left"><i class="fa fa-envelope"></i></span>
-							<input type="text" class="form-control" id="contact-email" name="contact-email" placeholder="Ваш Email" />
-						</div>
-						<div class="input-group">
-							<span class="input-group-addon tool-tip" title="Your Message" data-placement="left"><i class="fa fa-pencil"></i></span>
-							<textarea class="form-control" id="contact-message" name="contact-message" placeholder="Ваше сообщение" rows="5"></textarea>
-						</div>
-						<input type="submit" class="btn btn-lg btn-block" id="contact-form-submit" name="contact-form-submit" value="Отправить" />
-						<div class="alert alert-success" id="contact-success"></div>
-						<div class="alert alert-danger" id="contact-error"></div>
-					</form>
-				</div>
-			</div>
-			
-			<div class="about">
-				<a href="#" class="close-btn open-btn"><i class="fa fa-times"></i> Закрыть</a>
-				<div class="container">
-					<h1 class="heading">О компании</h1>
-					<p>Точность аналитических моделей зависит от учета погрешностей, особенно при поиске экстремумов целевых функций. Культурные факторы, такие как национальное наследие, оказывают влияние на социальную структуру и коммуникации. </p>
-					<p>Асимптотический анализ позволяет обнаруживать нетривиальные зависимости в экономических процессах. В свою очередь, визуализация поля направлений помогает понять поведение решений в динамических системах.</p>
-				</div>
-			</div>
-			
-    	</div>
+    <div class="container">
+        <img src="logo.webp" alt="Логотип ООО 'МПП'" class="logo">
+        <h1>Сайт временно не работает</h1>
+        <div class="nav-links">
+            <a href="#" onclick="openModal('notifyModal')">Предупредить об открытии</a>
+            <a href="#" onclick="openModal('contactModal')">Контакты</a>
+            <a href="#" onclick="openModal('aboutModal')">О компании</a>
+        </div>
+        <div class="timer">
+            <div><span id="days">00</span><br>дней</div>
+            <div><span id="hours">00</span><br>часов</div>
+            <div><span id="minutes">00</span><br>минут</div>
+            <div><span id="seconds">00</span><br>секунд</div>
+        </div>
     </div>
-    
-    <!-- SCRIPTS -->
-    
-    <!-- jQuery 1.10.2 -->
-    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-    <!-- Bootstrap 3.0.2 -->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <!-- InView -->
-    <script type="text/javascript" src="js/jquery.inview.js"></script>
-    <!-- Countdown -->
-    <script type="text/javascript" src="js/countdown.js"></script>
-    <!-- Vegas -->
-    <script type="text/javascript" src="js/jquery.vegas.min.js"></script>
-	<!-- ketchup.JS -->
-	<script src="js/jquery.ketchup.all.min.js"></script>
-    <!-- SCRIPTS.JS -->
-    <script type="text/javascript" src="js/scripts.js"></script>
 
+    <!-- Модальное окно: Предупредить об открытии -->
+    <div id="notifyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('notifyModal')">&times;</span>
+            <h2>Подписаться на открытие</h2>
+            <p>Оставьте Ваш email и мы Вас оповестим об открытии сайта</p>
+            <form>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required placeholder="Введите ваш email">
+                </div>
+                <button type="submit">Подписаться</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно: Контакты -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('contactModal')">&times;</span>
+            <h2>Связь с нами</h2>
+            <p>По любому вопросу вы можете отправить нам сообщение:</p>
+            <form>
+                <div class="form-group">
+                    <label for="name">Имя:</label>
+                    <input type="text" id="name" required placeholder="Введите ваше имя">
+                </div>
+                <div class="form-group">
+                    <label for="contact-email">Email:</label>
+                    <input type="email" id="contact-email" required placeholder="Введите ваш email">
+                </div>
+                <div class="form-group">
+                    <label for="message">Сообщение:</label>
+                    <textarea id="message" required placeholder="Ваше сообщение"></textarea>
+                </div>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно: О компании -->
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('aboutModal')">&times;</span>
+            <h2>О компании</h2>
+            <p>Точность аналитических моделей зависит от учета погрешностей, особенно при поиске экстремумов целевых функций. Культурные факторы, такие как национальное наследие, оказывают влияние на социальную структуру и коммуникации.</p>
+            <p>Асимптотический анализ позволяет обнаруживать нетривиальные зависимости в экономических процессах. В свою очередь, визуализация поля направлений помогает понять поведение решений в динамических системах.</p>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Таймер обратного отсчета (пример: 30 дней)
+        const launchDate = new Date('2025-06-22T00:00:00').getTime();
+        const timer = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.querySelector('.timer').textContent = 'Сайт открыт!';
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
