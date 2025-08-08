@@ -128,6 +128,61 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.add('loaded');
     });
 
+    // Yandex.Metrika event tracking
+    function trackEvent(eventName, eventParams = {}) {
+        if (typeof ym !== 'undefined') {
+            ym(XXXXXX, 'reachGoal', eventName, eventParams);
+        }
+    }
+
+    // Track form submissions
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            // Track form submission
+            trackEvent('form_submit', {
+                form_name: 'contact_form',
+                page: 'contact'
+            });
+        });
+    }
+
+    // Track button clicks
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            const buttonText = this.textContent.trim();
+            trackEvent('button_click', {
+                button_text: buttonText,
+                page: window.location.pathname
+            });
+        });
+    });
+
+    // Track navigation clicks
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            const section = this.getAttribute('href').substring(1);
+            trackEvent('navigation_click', {
+                section: section,
+                link_text: this.textContent.trim()
+            });
+        });
+    });
+
+    // Track scroll depth
+    let maxScroll = 0;
+    window.addEventListener('scroll', function() {
+        const scrollPercent = Math.round((window.pageYOffset / (document.body.scrollHeight - window.innerHeight)) * 100);
+        if (scrollPercent > maxScroll && scrollPercent % 25 === 0) {
+            maxScroll = scrollPercent;
+            trackEvent('scroll_depth', {
+                depth: scrollPercent
+            });
+        }
+    });
+
     // Handle image loading errors
     function handleImageError(element, className) {
         element.classList.add(className);
