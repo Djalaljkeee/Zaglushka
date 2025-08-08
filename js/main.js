@@ -131,14 +131,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Yandex.Metrika event tracking
     function trackEvent(eventName, eventParams = {}) {
         if (typeof ym !== 'undefined') {
-            ym(XXXXXX, 'reachGoal', eventName, eventParams);
+            ym(103640186, 'reachGoal', eventName, eventParams);
         }
     }
 
-    // Track form submissions
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+    // Track form submissions for analytics
+    const contactFormAnalytics = document.querySelector('.contact-form');
+    if (contactFormAnalytics) {
+        contactFormAnalytics.addEventListener('submit', function(e) {
             // Track form submission
             trackEvent('form_submit', {
                 form_name: 'contact_form',
@@ -249,19 +249,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add typing effect to hero title
     const heroTitle = document.querySelector('.hero h1');
     if (heroTitle) {
-        const text = heroTitle.textContent;
-        heroTitle.textContent = '';
+        const originalText = heroTitle.textContent;
+        heroTitle.innerHTML = '<span class="typing-cursor">|</span>';
         let i = 0;
         
         function typeWriter() {
-            if (i < text.length) {
-                heroTitle.textContent += text.charAt(i);
+            if (i < originalText.length) {
+                heroTitle.innerHTML = originalText.substring(0, i + 1) + '<span class="typing-cursor">|</span>';
                 i++;
-                setTimeout(typeWriter, 100);
+                setTimeout(typeWriter, 80);
+            } else {
+                // Remove cursor after typing is complete
+                setTimeout(() => {
+                    heroTitle.innerHTML = originalText;
+                }, 1000);
             }
         }
         
         // Start typing effect after a short delay
-        setTimeout(typeWriter, 500);
+        setTimeout(typeWriter, 800);
     }
 });

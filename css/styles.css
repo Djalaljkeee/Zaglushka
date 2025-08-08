@@ -458,3 +458,15 @@ body {
 html {
     scroll-behavior: smooth;
 }
+
+/* Typing animation cursor */
+.typing-cursor {
+    animation: blink 1s infinite;
+    color: #f5914f;
+    font-weight: bold;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
